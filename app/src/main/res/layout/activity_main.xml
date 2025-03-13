@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter up to 5 PDF URLs to download:"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/pdfUrl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="PDF 1 URL"
+        android:padding="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:drawable/edit_text" />
+
+    <EditText
+        android:id="@+id/pdfUrl2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="PDF 2 URL"
+        android:padding="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:drawable/edit_text" />
+
+    <EditText
+        android:id="@+id/pdfUrl3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="PDF 3 URL"
+        android:padding="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:drawable/edit_text" />
+
+    <EditText
+        android:id="@+id/pdfUrl4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="PDF 4 URL"
+        android:padding="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:drawable/edit_text" />
+
+    <EditText
+        android:id="@+id/pdfUrl5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="PDF 5 URL"
+        android:padding="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:drawable/edit_text" />
+
+    <Button
+        android:id="@+id/startDownloadBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Download"
+        android:padding="8dp" />
+
+</LinearLayout>
