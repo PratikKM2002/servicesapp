@@ -5,7 +5,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +29,14 @@ public class MainActivity extends AppCompatActivity {
     private EditText pdfUrl5;
     private Button startDownloadBtn;
 
+    // BroadcastReceiver to listen for download completion
+    private BroadcastReceiver downloadCompleteReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Toast.makeText(context, "File has been downloaded.", Toast.LENGTH_LONG).show();
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         pdfUrl5 = findViewById(R.id.pdfUrl5);
         startDownloadBtn = findViewById(R.id.startDownloadBtn);
 
+        // Register the broadcast receiver for download completion
+        IntentFilter filter = new IntentFilter("com.example.serviceapp.DOWNLOAD_COMPLETE");
+        registerReceiver(downloadCompleteReceiver, filter);
 
         startDownloadBtn.setOnClickListener(view -> {
             // For API < 29, request WRITE_EXTERNAL_STORAGE permission if needed
@@ -109,5 +123,12 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "No URLs provided.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Unregister the receiver to avoid memory leaks
+        unregisterReceiver(downloadCompleteReceiver);
     }
 }

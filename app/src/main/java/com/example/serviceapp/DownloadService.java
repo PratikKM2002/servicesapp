@@ -27,6 +27,9 @@ public class DownloadService extends Service {
         if (urls != null && !urls.isEmpty()) {
             new Thread(() -> {
                 downloadPdfs(urls);
+                // Send broadcast after downloads complete
+                Intent broadcastIntent = new Intent("com.example.serviceapp.DOWNLOAD_COMPLETE");
+                sendBroadcast(broadcastIntent);
                 stopSelf();
             }).start();
         } else {
